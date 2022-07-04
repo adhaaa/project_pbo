@@ -95,6 +95,27 @@ public class BukuViewFrame extends JFrame {
             BukuInputFrame inputFrame = new BukuInputFrame();
             inputFrame.setVisible(true);
         });
+        ubahButton.addActionListener(e->{
+            int barisTerpilih = viewTable.getSelectedRow();
+            if(barisTerpilih<0){
+                JOptionPane.showMessageDialog(
+                        null,
+                        "Pilih dulu datanya",
+                        "Validasi pilih data",
+                        JOptionPane.WARNING_MESSAGE
+                );
+                return;
+            }
+
+            TableModel tm = viewTable.getModel();
+            String idString = tm.getValueAt(barisTerpilih,0).toString();
+            int id = Integer.parseInt(idString);
+
+            BukuInputFrame inputFrame = new BukuInputFrame();
+            inputFrame.setId(id);
+            inputFrame.isiKomponen();
+            inputFrame.setVisible(true);
+        });
         isiTable();
         init();
 
