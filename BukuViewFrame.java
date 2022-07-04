@@ -91,8 +91,13 @@ public class BukuViewFrame extends JFrame {
 
             }
         });
+        tambahButton.addActionListener(e->{
+            BukuInputFrame inputFrame = new BukuInputFrame();
+            inputFrame.setVisible(true);
+        });
         isiTable();
         init();
+
     }
 
     public void init() {
@@ -112,6 +117,11 @@ public class BukuViewFrame extends JFrame {
             String header[] = {"Id", "Nama Buku"};
             DefaultTableModel dtm = new DefaultTableModel(header, 0);
             viewTable.setModel(dtm);
+            viewTable.getColumnModel().getColumn(0).setWidth(32);
+            viewTable.getColumnModel().getColumn(0).setMaxWidth(32);
+            viewTable.getColumnModel().getColumn(0).setMinWidth(32);
+            viewTable.getColumnModel().getColumn(0).setPreferredWidth(32);
+
             Object[] row = new Object[2];
             while (rs.next()) {
                 row[0] = rs.getInt("id");
